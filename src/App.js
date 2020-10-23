@@ -3,6 +3,12 @@ import React, { Component } from 'react';
 import Timer from './Timer'
 import Controls from './Controls'
 
+
+
+
+//To quickly recap, the componentDidUpdate method is useful for DOM manipulation and updating 3rd party libraries.
+//shouldComponentUpdate is useful in stopping unwanted component updates and is mainly used for performance enhancement.
+
 //no need to modify anything in this component
 class App extends Component {
 
@@ -14,6 +20,7 @@ class App extends Component {
   componentDidMount() {
     this.handleAddTimer()
   }
+  //calls the method to add one initial timer
 
   render() {
     console.log(this.state.timerIDs);
@@ -30,6 +37,9 @@ class App extends Component {
       </div>
     );
   }
+
+  //As mentioned in the previous section, every time App's state changes, it causes its Timer children to update.
+  //We can actually intercept and stop this from happening.
 
   // returns array of components written in JSX, mapped from this.state.timerIDs
   renderTimers = () => this.state.timerIDs.map(({id, updateInterval}) => <Timer key={id} id={id} removeTimer={this.removeTimer} updateInterval={updateInterval}/>)
