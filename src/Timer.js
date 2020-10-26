@@ -19,6 +19,17 @@ class Timer extends Component {
     );
   }
 
+  componentDidUpdate() {
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.time === nextState.time) {
+      return false
+    } else {
+      return true
+    }
+  }
+
   componentWillUnmount() {
     clearInterval(this.interval);
   }
